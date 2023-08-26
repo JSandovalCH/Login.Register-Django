@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proceso CRUD-Empleados</title>
+  <link rel="stylesheet" href="../static/styles/index.css" />
+</head>
+
+<body>
+  {% if login_error %}
+  <p>El inicio de sesión falló. Por favor, verifica tus credenciales.</p>
+  {% endif %}
+  {% if password_mismatch %}
+  <p>Las contraseñas no coinciden. Por favor, vuelve a intentarlo.</p>
+  {% endif %}
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="forms-wrap">
+          {{ login_error }}
+          <form id="login-form" method="POST" autocomplete="off" class="sign-in-form" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="logo">
+              <img src="../static/img/logo.png" alt="Senati" />
+              <h4>Login-Registro_SENATI</h4>
+            </div>
+
+            <div class="heading">
+              <h2>Bienvenido :)</h2>
+              <h6>¿Aún no te has registrado?</h6>
+              <a href="#" class="toggle">Regístrate</a>
+            </div>
+
+            <div class="actual-form">
+              <div class="input-wrap">
+                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username"
+                  required />
+                <label for="username">Username</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="password" minlength="8" class="input-field" autocomplete="off" id="password"
+                  name="password" required />
+                <label for="password">Contraseña</label>
+              </div>
+
+              <input name="login-form" type="submit" value="Iniciar Sesión" class="sign-btn" />
+
+              <p class="text">
+                Forgotten your password or you login datails?
+                <a href="#">Get help</a> signing in
+              </p>
+            </div>
+          </form>
+
+          {{ error }}
+          <form id="register-form" method="POST" autocomplete="off" class="sign-up-form" action="{% url 'registro' %}">
+            {% csrf_token %}
+            <div class="logo">
+              <img src="../static/img/logo.png" alt="Senati" />
+              <h4>Login-Registro_SENATI</h4>
+            </div>
+
+            <div class="heading">
+              <h2>Emepezemos</h2>
+              <h6>¿Ya tienes una cuenta?</h6>
+              <a href="#" class="toggle">Iniciar sesión</a>
+            </div>
+
+            <div class="actual-form">
+              <div class="input-wrap">
+                <input type="text" minlength="5" class="input-field" autocomplete="off" id="name" name="name"
+                  required />
+                <label for="name">Nombres</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="text" class="input-field" autocomplete="off" id="username" name="username" required />
+                <label for="username">Nombre de Usuario</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="email" class="input-field" autocomplete="off" id="email" name="email" required />
+                <label for="email">Correo Electrónico</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="password" minlength="8" class="input-field" autocomplete="off" id="password"
+                  name="password" required />
+                <label for="password">Contraseña</label>
+              </div>
+
+              <div class="input-wrap">
+                <input type="password" minlength="8" class="input-field" autocomplete="off" id="confirm_password"
+                  name="confirm_password" required />
+                <label for="confirm_password">Confirmar Contraseña</label>
+              </div>
+
+              <input name="register-form" type="submit" value="Registrarse" class="sign-btn" />
+
+              <p class="text">
+                By signing up, I agree to the
+                <a href="#">Terms of Services</a> and
+                <a href="#">Privacy Policy</a>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="carousel">
+          <div class="images-wrapper">
+            <img src="../static/img/image1.jpg" class="image img-1 show" alt="" />
+            <img src="../static/img/image2.jpg" class="image img-2" alt="" />
+            <img src="../static/img/image3.jpg" class="image img-3" alt="" />
+          </div>
+
+          <div class="text-slider">
+            <div class="text-wrap">
+              <div class="text-group">
+                <h2>"Formación técnica líder."</h2>
+                <h2>"Educación para empleo."</h2>
+                <h2>"Excelencia en capacitación."</h2>
+              </div>
+            </div>
+
+            <div class="bullets">
+              <span class="active" data-value="1"></span>
+              <span data-value="2"></span>
+              <span data-value="3"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Javascript file -->
+
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>
